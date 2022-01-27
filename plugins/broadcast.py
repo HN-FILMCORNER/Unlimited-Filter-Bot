@@ -1,4 +1,21 @@
-@Bot.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
+import os
+import time
+import math
+import json
+import string
+import random
+import traceback
+import asyncio
+import datetime
+import aiofiles
+from random import choice 
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, UserNotParticipant, UserBannedInChannel
+from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
+from database import Database
+
+@trojanz.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
 async def broadcast(bot, update):
 	broadcast_ids = {}
 	all_users = await db.get_all_users()
